@@ -1,4 +1,4 @@
-import { AddEthereumChainParameter } from 'vue-dapp/wallets'
+import { AddEthereumChainParameter } from '../wallets'
 
 export enum ChainId {
   Mainnet = 1,
