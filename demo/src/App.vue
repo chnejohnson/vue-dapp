@@ -14,7 +14,7 @@ import {
   WalletConnectConnector,
   CoinbaseWalletConnector,
 } from 'vue-dapp'
-import { inject, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const isDev = window.location.host === 'localhost:3000'
 const infuraId = isDev
