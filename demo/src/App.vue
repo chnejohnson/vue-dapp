@@ -14,7 +14,7 @@ import {
   WalletConnectConnector,
   CoinbaseWalletConnector,
 } from 'vue-dapp'
-import { ref, watch } from 'vue'
+import { inject, ref, watch } from 'vue'
 
 const isDev = window.location.host === 'localhost:3000'
 const infuraId = isDev
@@ -56,13 +56,12 @@ const connectors = [
   }),
 ]
 
-const supportedChainId = [
-  ChainId.Mainnet,
-  ChainId.Rinkeby,
-  ChainId.Arbitrum,
-  ChainId.Rinkarby,
-  ChainId.Polygon,
-]
+const { availableNetworks } = useEthers()
+
+const supportedChainId = Object.keys(availableNetworks.value).map((key) =>
+  Number(key),
+)
+
 const selectedChainId = ref(0)
 
 onActivated(() => {
