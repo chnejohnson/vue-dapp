@@ -5,6 +5,8 @@ import {
   ExternalProvider,
 } from '@ethersproject/providers'
 import { BigNumber, Signer } from 'ethers'
+import { NETWORK_DETAILS } from '../constants'
+import { AddEthereumChainParameter } from '../wallets'
 
 export type { Web3Provider, Signer, Network }
 
@@ -14,6 +16,10 @@ const signer = ref<Signer | null>(null)
 const network = ref<Network | null>(null)
 const address = ref('')
 const balance = ref<bigint>(BigInt(0))
+
+const availableNetworks = ref<{ [key: number]: AddEthereumChainParameter }>({
+  ...NETWORK_DETAILS,
+})
 
 const deactivate = () => {
   isActivated.value = false
@@ -98,6 +104,7 @@ export function useEthers() {
     network,
     address,
     balance,
+    availableNetworks,
 
     // getters
     chainId,
